@@ -11,7 +11,7 @@ RUN go get -d
 RUN CGO_ENABLED=0 GOOS=linux go build -a -tags netgo -ldflags '-w'
 
 # Final image.
-FROM scratch
+FROM alpine
 LABEL maintainer "Yuji Oshima <yuji.oshima0x3fd@gmail.com>"
 COPY --from=builder /go/src/github.com/osrg/task-monitor .
 EXPOSE 8080
